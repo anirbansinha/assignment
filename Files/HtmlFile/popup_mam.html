@@ -1,0 +1,2211 @@
+<html><head>	
+    <script type="text/javascript" src="shCore.js" language="javascript"></script>
+    <script type="text/javascript" src="shBrushJScript.js" language="javascript"></script>
+    <script type="text/javascript" src="ModalPopups.js" language="javascript"></script>
+	<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="jquery-ui-1.7.1.custom.min.js"></script>
+	
+<!--Get url and title of current page -->
+
+
+<script>
+window.addEventListener("load", windowLoaded, false);
+    
+function windowLoaded() {
+     
+
+	chrome.tabs.getSelected(null, function(tab) {
+	
+       // document.getElementById('currentLink').value= tab.url;
+	
+        //document.getElementById('currentTitle').value= tab.title;
+			
+    });
+}
+
+</script>
+
+
+
+<style>
+body {
+  
+/*min-width:353px;*/
+/*min-width:543px;*/
+
+  overflow-x:hidden;
+
+background-color:#faf8cc;
+
+
+}
+
+
+input#one{
+text-align:left;
+color : Black;
+font-family:Times New Roman;
+-webkit-transition-duration: 0.5s;
+font-size : 15px;
+background-color : #faf8cc;
+letter-spacing : 1px;
+width : 100%;
+align : left;
+size : 300px;}
+
+
+
+.lbs{
+
+width:97px;
+
+padding:5px;
+
+float:left;
+
+
+}
+
+.lbs img
+{
+
+vertical-align:middle;
+  
+width:97px;
+  
+height:97px;
+  
+float:left;
+
+ -webkit-transition-duration: 0.5s;
+
+}
+
+
+.lbs img:hover
+{
+
+cursor:pointer;
+	
+-webkit-transform:scale(0.8);
+	
+-webkit-box-shadow:0px 0px 30px #ccc;
+    
+}
+
+  
+#manage_album, #upload_image, #friendPic
+{
+
+clear:both;
+
+float:left;
+
+}
+#pagingLinks{
+clear:both;
+float:left;
+width:100%;
+}
+#login{
+clear:both;
+text-align:center;
+min-width:353px;
+}
+#upload_image{
+float:right;
+}
+
+
+.img
+{
+  
+float:left;
+  -webkit-transition-duration: 0.5s;
+
+}
+#friendPic{
+float:left;
+min-height:120px;
+width:350px;
+}
+#friendPic img{
+border:1px solid #000;
+}
+
+
+
+.img:hover{
+	
+cursor:pointer;
+	
+-webkit-transform:scale(0.8);
+	
+-webkit-box-shadow:0px 0px 30px #ccc;
+
+}
+
+.img:hover:after{
+
+width:100%;
+text-align:center;
+margin-top:-20px;
+z-index:3000;
+position:relative;
+float:left;
+-webkit-box-shadow:0px 0px 30px blue;
+color:blue;
+background-color:#CCC;
+cursor:pointer;
+
+
+}
+
+
+
+#alphabets{
+color:#000;
+float:right;
+width:auto;
+height:40px;
+font-weight:bold;
+font-size:12px;
+letter-spacing:4px;
+}
+.qlscores{
+font-weight:bold;
+padding: 0 9px 0 9px;
+font-size:12px;
+color:#000;
+}
+.qlscores table{
+font-weight:bold;
+font-size:12px;
+
+}
+#alphabets a{
+color:#000;
+font-size:15px;
+-webkit-transition-duration: 0.5s;
+}
+
+
+#alphabets a:hover
+{
+color:#fff;
+-webkit-transform:scale(0.8);
+}
+
+
+#fbpic{
+
+width:50px;
+float:left;
+
+}
+.selectedFriend{
+width:97px;
+padding:5px;
+float:left;
+background-color:blue;
+}
+
+.selectedFriend img
+{
+vertical-align:middle;
+width:97px;
+height:97px;
+float:left;
+}
+.selectedFriend
+{
+cursor:pointer;
+-webkit-transform:scale(0.8);
+-webkit-box-shadow:0px 0px 30px #ccc;  
+}
+
+
+div.success, div.sending,div.error ,div.sent{
+
+background-repeat:no-repeat;
+border:2px solid;
+
+padding:0.1em 0.1em 0.1em 10px;
+font-size:12px;
+}
+
+.success {
+background-color:#F0FFF0;
+color:#000000;
+}
+
+.error {
+
+color:#FF0000;
+}
+.sending {
+background-color:#FFFFCC;
+color:#FF0000;
+}
+input {
+   font-family: "Times New Roman", Times, serif;
+   font-size: 12px;
+   font-weight: bold;
+   color: #FF0000;
+  /* background-color: #FFCCCC;*/
+   padding: 5px;
+   height: 30px;
+   width: 100px;
+}
+input.drag{
+
+   font-family: "Times New Roman", Times, serif;
+   font-size: 12px;
+   font-weight: bold;
+   color: #000000;
+   width: 30px;
+   float:left;
+   margin-top:-30px;
+}
+input.Login {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 14px;
+   font-weight: bold;
+   color: #000;
+	width:100%;
+   padding: 2px;
+   height: 25px;
+   
+   border: 1px solid #000000;
+   background-image:url('login_send.png');
+} 
+#friendNameDiv{
+font-size:12px;
+font-weight:bold;
+text-align:center;
+}
+.pageurl{
+font-weight:bold;
+}
+.pagingAnchorLinks{
+
+}
+.pager{
+text-align:center;
+letter-spacing:2px;
+color:blue;
+
+float:middle;
+font-family: Arial, Helvetica, sans-serif;
+
+}
+.pager{
+font-size:14px;
+}
+.pager a{
+text-decoration:none;
+font-size:14px;
+
+}
+#mainContent{
+clear: both;
+float: left;
+}
+.body62 {
+  min-width:600px;
+ }
+.lbs62{
+	width:90px;
+	padding:5px;
+	float:left;
+}
+
+.lbs62 img
+{
+	vertical-align:middle;
+	width:90px;
+	height:90px;
+	float:left;
+	 -webkit-transition-duration: 0.5s;
+	 display:block;
+}
+.lbs62 img:hover
+{
+	cursor:pointer;
+	-webkit-transform:scale(0.8);
+	-webkit-box-shadow:0px 0px 30px #ccc;
+}
+.selectedFriend62{
+width:90px;
+padding:5px;
+float:left;
+background-color:blue;
+}
+
+.selectedFriend62 img
+{
+vertical-align:middle;
+width:90px;
+height:90px;
+float:left;
+}
+
+
+.selectedFriend62
+{
+cursor:pointer;
+-webkit-transform:scale(0.8);
+-webkit-box-shadow:0px 0px 30px #ccc;  
+}
+
+.body93 {
+  min-width:600px;
+ }
+.lbs93{
+	width:55px;
+	padding:5px;
+	float:left;
+}
+
+.lbs93 img
+{
+	vertical-align:middle;
+	width:55px;
+	height:55px;
+	float:left;
+	 -webkit-transition-duration: 0.5s;
+	 display:block;
+}
+.lbs93 img:hover
+{
+	cursor:pointer;
+	-webkit-transform:scale(0.8);
+	-webkit-box-shadow:0px 0px 30px #ccc;
+}
+.selectedFriend93{
+width:55px;
+padding:5px;
+float:left;
+background-color:blue;
+}
+
+.selectedFriend93 img
+{
+vertical-align:middle;
+width:55px;
+height:55px;
+float:left;
+}
+
+
+.selectedFriend93
+{
+cursor:pointer;
+-webkit-transform:scale(0.8);
+-webkit-box-shadow:0px 0px 30px #ccc;  
+}
+
+.body32 {
+  min-width:600px
+ }
+.lbs32{
+	width:97px;
+	padding:5px 50px 5px 50px;
+	float:left;
+}
+
+.lbs32 img
+{
+	vertical-align:middle;
+	width:97px;
+	height:97px;
+	float:left;
+	 -webkit-transition-duration: 0.5s;
+	 display:block;
+}
+.lbs32 img:hover 
+{
+	cursor:pointer;
+	-webkit-transform:scale(0.8);
+	-webkit-box-shadow:0px 0px 30px #ccc;
+}
+.selectedFriend32{
+width:97px;
+padding:5px 50px 5px 50px;
+float:left;
+background-color:blue;
+}
+
+.selectedFriend32 img
+{
+vertical-align:middle;
+width:97px;
+height:97px;
+float:left;
+}
+.selectedFriend32
+{
+cursor:pointer;
+-webkit-transform:scale(0.8);
+-webkit-box-shadow:0px 0px 30px #ccc;  
+}
+
+
+.body52 {
+  min-width:600px;
+ }
+.lbs52{
+	width:108px;
+	padding:5px;
+	float:left;
+}
+
+.lbs52 img
+{
+	vertical-align:middle;
+	width:108px;
+	height:108px;
+	float:left;
+	 -webkit-transition-duration: 0.5s;
+	 display:block;
+}
+.lbs52 img:hover 
+{
+	cursor:pointer;
+	-webkit-transform:scale(0.8);
+	-webkit-box-shadow:0px 0px 30px #ccc;
+}
+.selectedFriend52{
+width:108px;
+padding:5px;
+float:left;
+background-color:blue;
+}
+
+.selectedFriend52 img
+{
+vertical-align:middle;
+width:108px;
+height:108px;
+float:left;
+}
+.selectedFriend52
+{
+cursor:pointer;
+-webkit-transform:scale(0.8);
+-webkit-box-shadow:0px 0px 30px #ccc;  
+}
+.ed93{
+font-size:10px;
+width: auto;
+position:absolute;
+margin:10px 0 0 2px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.ed32{
+font-size:14px;
+width: 100px;
+position:absolute;
+margin:10px 0 0 2px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.ed52{
+width: 110px;
+position:absolute;
+margin:20px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.ed62{
+width: 85px;
+position:absolute;
+margin:20px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.ed{
+width: 110px;
+position:absolute;
+margin:20px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+
+
+
+.dl93{
+font-size:10px;
+width: 50px;
+position:absolute;
+margin:30px 0 0 2px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.dl32{
+width: 110px;
+position:absolute;
+margin:60px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.dl52{
+width: 110px;
+position:absolute;
+margin:60px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.dl62{
+width: 85px;
+position:absolute;
+margin:40px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.dl{
+width: 110px;
+position:absolute;
+margin:20px 0 0 0px;
+background-color:#ccc;
+opacity: 0.4;
+color:#000;
+text-align:center;
+}
+.colrow{
+float:right;
+}
+#addNote{
+float:left;
+}
+#inviteFriends{
+float:right;
+}
+.mypic{
+margin: 3px 0 0 0;
+
+}
+#allinbadges{
+
+}
+.switchText{
+font-size:11px;
+}
+.inputSwitch{
+	height:20px;
+	color:#000;
+}
+.radioSwitch{
+width:15px;
+height:20px;
+}
+
+/********** Group***********/
+.selGroup{
+	width:30px;
+	padding:5px;
+	float:left;
+}
+
+.selGroup img
+{
+	vertical-align:middle;
+	width:30px;
+	height:30px;
+	float:left;
+	 -webkit-transition-duration: 0.30s;
+	 display:block;
+}
+.selGroup img:hover
+{
+	cursor:pointer;
+	-webkit-transform:scale(0.8);
+	-webkit-box-shadow:0px 0px 30px #ccc;
+}
+
+.selectedGroup{
+width:25px;
+padding:5px;
+float:left;
+background-color:blue;
+}
+
+.selectedGroup img
+{
+vertical-align:middle;
+width:25px;
+height:25px;
+float:left;
+
+}
+
+
+.selectedGroup
+{
+cursor:pointer;
+-webkit-transform:scale(0.8);
+-webkit-box-shadow:0px 0px 30px #ccc;  
+}
+.txtgroupname{
+font-weight:bold;
+font-size:10px;
+text-align: center;
+}
+
+#changePic a:hover{
+border:1px solid #ff0000;
+position:absolute;
+}
+/*********** GroupEnds */
+
+#txtchangepic{
+position:absolute;
+background:#ccc;
+}
+</style>
+
+
+
+</head>
+
+
+<body>
+
+
+<div id="message"></div>
+	<div id="profile_pics">	
+	</div>
+<script>
+var loadtime = Math.round(new Date().getTime() / 1000);
+
+</script>
+
+<div id="mainContent">
+<div id="friendPicParent" >
+		<div id="friendPic">
+		
+		</div>
+</div>
+	<div id="pagingLinks"> 
+	</div>
+</div>
+<div id="ads_container"></div>
+<div id="manage_album"> 
+</div>
+<div id="txtAddNote">
+<div id="addNote">
+<!--	<a href="javascript:void(0)" onClick="ModalPopupsCustom1();">Add Note</a>-->
+	<input type="hidden" name="messageNote" id="messageNote">
+ </div>
+ <div id="inviteFriends">
+	<!--<a href="javascript:void(0)" onClick="inviteFriends();">Import Friends</a>-->
+ </div>
+</div>
+<div id="top_buttons">
+
+<div id="login">
+  <!--<a href="javascript:showLogin();"><input type="button" name="login" value="Click to Login" class="Login"></a>-->
+</div>
+
+
+
+</div>
+<div id="fb-root"></div>
+<input type="hidden" id="currentLink" name="currentLink" >
+<input type="hidden" id="currentTitle" name="currentTitle">
+
+<script type="text/javascript">
+ 
+function showEdit(){
+document.getElementById('txtchangepic').style.display = '';
+}
+
+function hideEdit(){
+document.getElementById('txtchangepic').style.display = 'none';
+}
+
+	chrome.tabs.getSelected(null, function(tab) {
+		document.getElementById('currentLink').value= tab.url;
+		document.getElementById('currentTitle').value= tab.title;
+	});
+
+function logout(){
+	localStorage.clear();
+	location.reload();
+}
+
+
+function inviteFriends(){
+window.open("http://quiclink.com/extension/oi/oi.php?uid="+localStorage.getItem("fbuid"), "Manage Album", "width=400,height=243");
+}
+
+function showManageAlbum(){
+window.open("http://quiclink.com/extension/manage.php?uid="+localStorage.getItem("fbuid"), "Manage Album", "width=400,height=240");
+}
+
+function showManageGroups(){
+	window.open("http://quiclink.com/extension/managegroups.php?uid="+localStorage.getItem("fbuid"), "Manage Album", "width=500,height=600");
+}
+
+function showLogin()
+{
+  //window.open("http://quiclink.com/extension/login.php", "QuicLink Login", "width=400,height=200");
+	chrome.extension.sendRequest(
+	  {
+		message: "showLogin"
+	  },
+	  function(session)
+	  {  
+	  });
+}
+
+  
+chrome.extension.sendRequest(
+  {
+    message: "getSession"
+  },
+  function(session)
+  {  
+
+		if(window.localStorage.length>0)
+		{
+			//processing('loadingmsgtop','Please wait','loading...');
+			
+			viewAlbum();
+			
+		}else{
+			showLogin();
+		}
+    
+  });
+
+
+
+
+function selectFriend(fid,divIdName,colsrows){
+
+	if(document.getElementById("txt_fid_" + fid).value==0){
+		document.getElementById("txt_fid_" + fid).value = fid;
+		newdiv = document.getElementById(divIdName);
+		if(colsrows!='undefined'){
+			newdiv.setAttribute('class',"selectedFriend"+colsrows);
+		}else{
+			newdiv.setAttribute('class',"selectedFriend");
+		}
+	}else{
+		document.getElementById("txt_fid_" + fid).value = 0;
+		newdiv = document.getElementById(divIdName);
+		if(colsrows!='undefined'){
+			newdiv.setAttribute('class',"lbs"+colsrows);
+		}else{
+			newdiv.setAttribute('class',"lbs");
+		}
+	}
+}
+
+
+
+
+/*function sendMail(){
+
+	var blnvalidate = true;  
+	var elementsInputs;
+	var comma = '';
+	var emailToId = '';
+	elementsInputs = document.getElementsByTagName("input"); 
+
+	for (var intCounter = 0; intCounter < elementsInputs.length; intCounter++) { 
+		if(elementsInputs[intCounter].name == "txt_fid"){
+			if(elementsInputs[intCounter].value != '0'){
+				if(emailToId !='') comma = ',';
+				emailToId  = elementsInputs[intCounter].value + comma + emailToId;			
+			}
+		}		
+	}
+	//Checkforgroup
+	var send_to_group_selected = jQuery('#send_to_group_selected').val();
+
+	if(emailToId == '' && send_to_group_selected==0){
+				displayMessage('displayMessageQuicLinkId','QuicLink Error','No friend selected.');
+				setTimeout('ModalPopups.Close(\"displayMessageQuicLinkId\");',2000);
+	}else{
+		var clicktime = Math.round(new Date().getTime() / 1000);	
+		processing('processingQuicLinkId','Please wait','Sending...');
+		var req = new XMLHttpRequest();
+		req.open(
+			"GET",	
+			"http://quiclink.com/extension/manage.php?action=sendmail&tofid=" + emailToId + "&groupid="+send_to_group_selected+"&uid="+localStorage.getItem("fbuid")+'&pagetitle='+document.getElementById('currentTitle').value+'&pagelink='+document.getElementById('currentLink').value+'&message='+jQuery('#messageNote').val() + '&clicktime=' + clicktime+'&loadtime='+loadtime,
+			true);
+		req.onload = getPics;
+		req.send(null);
+
+		function getPics() {			 
+			 setTimeout('ModalPopups.Close(\"processingQuicLinkId\");');
+			 displayMessage('displayMessageQuicLinkId','QuicLink Success','Mail sent sucessfully...<br>QuicLink will close automatically');
+			 setTimeout('ModalPopups.Close(\"displayMessageQuicLinkId\");',2000);
+			 setTimeout('closeExtension()',2000);
+			 
+		}
+	}
+	
+}*/
+
+function closeExtension(){
+			 window.close();
+}
+
+function viewAlbum(){
+//localStorage.removeItem("switched_Users_Session");
+//switched_Users = localStorage.getItem("switched_Users_Session");
+//alert(switched_Users);
+//	document.getElementById('login').innerHTML = '<input type="button" name="loading" value="Loading..." class="Login">';
+	if(localStorage.getItem("fbuid") == 'null'){
+		showLogin();
+	}
+	var sessionData = localStorage.getItem("Mysession");
+	
+	var zeroIndex = sessionData.split('"uid":');
+	var zeroIndex = zeroIndex[1].split(',"email":');
+	var uid = zeroIndex[0];
+	var unameSplit = zeroIndex[1].split(',"name":"');
+	var unameSplit = unameSplit[1].split('"}');
+	
+	localStorage.setItem("uname",unameSplit[0]);
+	localStorage.setItem("fbuid",uid);
+	
+	
+	var req = new XMLHttpRequest();
+
+	req.open(
+		"GET",
+		"http://quiclink.com/extension/manage.php?getimages=all&uid=" + localStorage.getItem("fbuid"),
+		true);
+	req.onload = getPics;
+	req.send(null);
+	function getPics() {
+		xmlDoc = req.responseXML; 
+		var x			= xmlDoc.getElementsByTagName("image");
+		var fid			= xmlDoc.getElementsByTagName("fid");
+		var myimg		= xmlDoc.getElementsByTagName("myimage");
+		var myusername	= xmlDoc.getElementsByTagName("myusername");
+	//	var friendname	= xmlDoc.getElementsByTagName("friendname");
+		//var friendemail	= xmlDoc.getElementsByTagName("friendemail");
+		var totsentql	= xmlDoc.getElementsByTagName("totsentql");
+		
+
+		var friendship_badges	= xmlDoc.getElementsByTagName("friendship_badges");
+		var daily_sender	= xmlDoc.getElementsByTagName("daily_sender");
+		var weekly_sender	= xmlDoc.getElementsByTagName("weekly_sender");
+		var sender_badges	= xmlDoc.getElementsByTagName("sender_badges");
+		
+		totbadges = '<table><tr></tr><tr></tr><tr></tr><tr>';
+		totbadges += '<td><b>Recent Badges Earned:</b></td></tr><tr></tr>';
+		friendship_badges = friendship_badges[0].childNodes[0].nodeValue;
+		
+		if(friendship_badges !='none'){
+			var friendship_badges_title = friendship_badges.replace(/_/g, " ");	
+			totbadges += '<tr><td><img src=" ' + friendship_badges + '.jpg" title="'+ friendship_badges_title +'"height="45" width="45"> &nbsp;&nbsp;&nbsp;&nbsp;';
+		}
+		daily_sender = daily_sender[0].childNodes[0].nodeValue;
+		
+		if(daily_sender !='none'){
+			var daily_sender_badges_title = daily_sender.replace(/_/g, " ");	
+			totbadges += '<img src="' + daily_sender + '.jpg" title="'+daily_sender_badges_title+'"height="45" width="45"> &nbsp;&nbsp;&nbsp;&nbsp;';
+		}
+		weekly_sender = weekly_sender[0].childNodes[0].nodeValue;
+		
+		if(weekly_sender !='none'){
+			var weekly_sender_badges_title = weekly_sender.replace(/_/g, " ");	
+			totbadges += '<img src="' + weekly_sender + '.jpg" title="'+ weekly_sender_badges_title +'" height="45" width="45"> &nbsp;&nbsp;&nbsp;&nbsp;';
+		}
+		sender_badges = sender_badges[0].childNodes[0].nodeValue;
+		
+		if(sender_badges !='none'){
+			var sender_badges_title = sender_badges.replace(/_/g, " ");	
+			totbadges += '<img src="' + sender_badges + '.jpg" title="'+sender_badges_title+'" height="45" width="45"> &nbsp;&nbsp;&nbsp;&nbsp;';
+		}
+		totbadges += '</tr></table>';
+		var qlspeed	= xmlDoc.getElementsByTagName("qlspeed");
+
+		document.getElementById('totsentql_id').innerHTML = totsentql[0].childNodes[0].nodeValue ;
+		document.getElementById('allinbadges').innerHTML = totbadges;
+		if(qlspeed[0].childNodes[0].nodeValue==0){
+		document.getElementById('qlspeed_id').innerHTML = '';
+		}else{
+		document.getElementById('qlspeed_id').innerHTML = qlspeed[0].childNodes[0].nodeValue ;
+		}
+		
+		if(myimg[0].childNodes[0].nodeValue=='NO_IMAGE'){
+				profileImagePath = 'http://quiclink.com/extension/images/no_image.gif';
+		  }else{
+		     var profileImagePath = "http://quiclink.com/extension/images/" + localStorage.getItem("fbuid") + '/' + myimg[0].childNodes[0].nodeValue
+		  }
+
+		  
+		  
+	    document.getElementById('fbpic').innerHTML = '<div class="mypic" id="mypic"><div id="changePic"><span id="txtchangepic" style="display:none;"><a href="javascript:void(0)" onclick="changePic()" onmouseover="showEdit()" >Edit</a></span><a href="#" onmouseover="showEdit()" onmouseout="hideEdit()"><img width="100" height="100" src="' + profileImagePath + '"></a></div></div><br>';
+		//document.getElementById('fbpic').innerHTML = '<div class="mypic" id="mypic"><div id="changePic"><span id="txtchangepic" style="display:none;"><a href="javascript:void(0)" onclick="changePic()" onmouseover="showEdit()" >Edit</a></span><a href="#" onmouseover="showEdit()" onmouseout="hideEdit()"><img width="50" height="50" src="' + profileImagePath + '"></a></div></div>';
+        var hasfriends = false;
+		var ni = document.getElementById('friendPic');
+		var totFriends = 0;
+		var mycols = xmlDoc.getElementsByTagName("mycols");
+		var myrows = xmlDoc.getElementsByTagName("myrows");
+		
+		mycols = mycols[0].childNodes[0].nodeValue;
+		myrows = myrows[0].childNodes[0].nodeValue
+		
+		//var theSelectedValue = mycols+','+myrows;
+		var sel32 = '';
+		var sel52 = '';
+		var sel62 = '';
+		var sel93 = '';
+		if('3,2'==theSelectedValue){ var sel32 = 'selected="selected"'; }
+		if('5,2'==theSelectedValue){ var sel52 = 'selected="selected"'; }
+		if('6,2'==theSelectedValue){ var sel62 = 'selected="selected"'; }
+		if('9,3'==theSelectedValue){ var sel93 = 'selected="selected"'; }
+
+		var selectBox = '<select name="layout" id="layout" onChange="goToMainPageColsRows(this.value)"><option value="3,2" '+ sel32 + '>3*2</option><option value="5,2" '+ sel52 +'>5*2</option><option value="6,2" '+ sel62 +'>6*2</option><option value="9,3" ' + sel93 + '>9*3</option></select>';
+		document.getElementById('selectbox_id').innerHTML = selectBox;
+		
+		if(myrows!='0' && mycols!='0'){
+			var friendsPerPage = mycols*myrows;	
+		}else{
+			var friendsPerPage = 10;
+		}
+	
+		for(i=0;i<x.length;i++){
+		  var sortableDiv = document.createElement("div");
+		  sortableDiv.setAttribute('id',"sortableDiv");
+		  var newdiv = document.createElement('div');
+		  var divIdName = 'myDiv_' + i;
+		  if(i>(friendsPerPage-1)){
+			newdiv.setAttribute('style','display:none');
+		  }
+		  
+		  newdiv.setAttribute('id',divIdName);
+		  if(myrows!='0' && mycols!='0'){
+			newdiv.setAttribute('class',"lbs"+mycols+myrows);
+			var clsSel = mycols+myrows;
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,8);
+			$('body').addClass('body'+mycols+myrows);
+		  }else{
+			newdiv.setAttribute('class',"lbs");
+			var clsSel = '';
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,15);
+		}
+		  
+		  var friendNameDiv = document.createElement("div");
+		  friendNameDiv.setAttribute('id',"friendNameDiv");
+		  friendNameDiv.innerHTML = friendName;
+
+
+		  var myinput = document.createElement("input");		  
+		  myinput.setAttribute('type',"hidden");
+		  myinput.setAttribute('name',"txt_fid");
+		  myinput.setAttribute('id',"txt_fid_"+fid[i].childNodes[0].nodeValue);
+		  myinput.setAttribute('value',"0");
+		  var img = document.createElement("image");
+		  img.setAttribute('OnClick',"selectFriend('"+  fid[i].childNodes[0].nodeValue +"','"+ divIdName +"','"+ clsSel +"')");
+		  
+		  var dbImgStr = x[i].childNodes[0].nodeValue;
+		//alert(localStorage.getItem("fbuid") + '/' + x[i].childNodes[0].nodeValue);
+		  if (dbImgStr.match(/http.*?/)){
+			img.src = x[i].childNodes[0].nodeValue;
+		  }else if(x[i].childNodes[0].nodeValue!='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/'+ localStorage.getItem("fbuid") + '/' + x[i].childNodes[0].nodeValue;
+		  }
+		  img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+
+		  if(x[i].childNodes[0].nodeValue=='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/no_image.gif';
+			img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  }		  
+		  hasfriends = true;
+
+		 
+		  sortableDiv.appendChild(newdiv);
+
+		  newdiv.appendChild(friendNameDiv);
+		  newdiv.appendChild(img);
+		  ni.appendChild(newdiv);
+		
+		  newdiv.appendChild(myinput);
+		  
+		  totFriends++;
+					
+		}
+		/*var search_alphabets = '';
+		if(hasfriends === true){
+		    
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'all'"+')">View All</a><br>'
+			
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'a'"+')">A</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'b'"+')">B</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'c'"+')">C</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'d'"+')">D</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'e'"+')">E</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'f'"+')">F</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'g'"+')">G</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'h'"+')">H</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'i'"+')">I</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'j'"+')">J</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'k'"+')">K</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'l'"+')">L</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'m'"+')">M</a><br>';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'n'"+')">N</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'o'"+')">O</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'p'"+')">P</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'q'"+')">Q</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'r'"+')">R</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'s'"+')">S</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'t'"+')">T</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'u'"+')">U</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'v'"+')">V</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'w'"+')">W</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'x'"+')">X</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'y'"+')">Y</a>|';
+			search_alphabets += '<a href="javascript:void(0)" onClick="filterBy('+"'z'"+')">Z</a>';
+			
+			//|B|C|D|E|F|B|H|I|J|K|L|M <br>N|O|P|Q|R|S|T|U|V|W|X|Y|Z';
+			
+		}
+		document.getElementById('alphabets').innerHTML = search_alphabets;
+		if(hasfriends === false){
+			document.getElementById('friendPic').innerHTML = returnHTML('QuicLink','No friend found.','Please click Add friend to add now.');
+		}
+		if(hasfriends === true){
+			generatePagingLinks(totFriends,friendsPerPage);
+		}*/
+	}
+
+	
+
+//------------ Getting Ads into Extension
+/*	var extAds = new XMLHttpRequest();
+	extAds.open(
+		"GET",
+		"http://quiclink.com/extension/ads.php?action=getads&limit=4&title=" + document.getElementById('currentTitle').value+"&link="+document.getElementById('currentLink').value,
+		true);
+	extAds.onload = getAds;
+	extAds.send(null);
+	function getAds() {	
+
+		xmlDoc = extAds.responseXML; 
+		var adstitle=xmlDoc.getElementsByTagName("adstitle");
+		var adslink=xmlDoc.getElementsByTagName("adslink");
+		var adsdescription=xmlDoc.getElementsByTagName("adsdescription");
+		//alert(x.length);	
+		var tableStr = '<table cellspacing="0" cellpadding="0"><tr>';
+		var modCounter = 1;
+		
+		for(i=0;i<adstitle.length;i++){
+		
+			tableStr += '<td>';
+			tableStr += '<a href="' + adslink[i].childNodes[0].nodeValue + '">';
+			tableStr += adstitle[i].childNodes[0].nodeValue;
+			tableStr += '</a>';
+			tableStr += '</td>';
+			tableStr += '<td>';
+			tableStr += '-';
+			tableStr += '</td>';
+			tableStr += '<td>';
+			if(adsdescription[i].childNodes[0].nodeValue!='-'){				
+				tableStr += adsdescription[i].childNodes[0].nodeValue.substr(0,20);
+			}
+			tableStr += '</td>';
+			if(modCounter%2==0){
+				tableStr += '</tr><tr>';
+			}
+			modCounter++;
+		}
+		tableStr += '</tr></table>';
+
+		document.getElementById("ads_container").innerHTML = tableStr;
+	}*/
+//------------ Getting Ads into Extension Ends
+
+	var totsentql = '';
+	var qlspeed = '';
+	var totbadges = '';
+	
+	document.getElementById("profile_pics").innerHTML = "<table cellpadding='5' cellspacing='5' width='100%'><div id='fbpic'></div><br /><br /><br /><div class='qlscores'><div class='qlpoints'><br><td rowspan='2'><img src='ext_logo.png' height='150' width='70'/></td><td align='center'> <h5>2193<br>QUICLINES SENT AT AVERAGE<br>SPEED OF <span id='qlspeed_id'>" + qlspeed + "</span><br>SECONDS</td></tr></div><div class='totsentql'><br><br><tr><td align='center'><h4><span id='totsentql_id'>"+ totsentql +"</span><br>POINT EARNED</td></tr></div></table><br><div class='qlbadges' id='allinbadges'>"+ totbadges +"</div></div><div id='alphabets'></div>"+'<div class="colrow" id="selectbox_id"></div><br><hr><input id="one" type="button" align="left" href="javascript:void(0)" OnClick="switchUser()" Value="VIEW QUICKLINK SENT"><br><input type="button" id="one" name="Edit Friend" href="javascript:showManageAlbum();" value="EDIT FRIENDS"><br><input type="button" id="one" name="Import Friends" href="javascript:void(0)" onClick="inviteFriends();" Value="IMPORT FRIENDS"><br><input type="button" id="one" name="Send Feedback" href="javascript:void(0)" onclick="sendFeedBack()" Value="SEND FEEDBACK"><br><input type="button" id="one" name="Switch User" href="javascript:void(0)" OnClick="switchUser()" Value="SWITCH USER"></br><input type="button" id="one" name="Logout" href="javascript:void(0)" onclick="logout()" Value="LOGOUT">';
+	//document.getElementById("profile_pics").innerHTML = "<table cellspacing='0' cellpadding='0' border='0'><tr valign='top'><td class='td_fbpic'><div id='fbpic'></div></td><td><div class='qlscores'><div class='qlpoints'>QL Points: <span id='totsentql_id'>" + totsentql + "</span></div><div class='qlspeed'>QL Speed: <span id='qlspeed_id'>"+ qlspeed +"</span></div><div class='qlbadges' id='allinbadges'>Badges: "+ totbadges +"</div></div></td><td><div id='alphabets'></div></td><td>"+'<div class="colrow" id="selectbox_id"></div></td><td><div class="extlogo"><img src="ext_logo.png" width="50" height="50"></div></td></tr><tr><td colspan="5"><a href="javascript:void(0)" onclick="logout()">Logout</a> | <a href="javascript:void(0)" OnClick="switchUser()">Switch User</a> | <a href="javascript:void(0)" onclick="sendFeedBack()">Send Feedback</a></td></table>';
+
+
+
+/*
+	 document.getElementById('manage_album').innerHTML ='<input type="hidden" name="selectedTab" id="selectedTab" value="mainPage"><input type="hidden" name="selectedPage" id="selectedPage" value="1"><table style="padding-top:20px;"><tr><td class="pagetitle"><strong>Title:</strong></td><td><p>'+ document.getElementById('currentTitle').value.substr(0,40) +'...</p></td></tr><tr><td class="pageurl"><strong>URL:</strong></td><td><p>'+ document.getElementById('currentLink').value.substr(0,40) +'...</p></td></tr></table><table cellspacing="0" cellpadding="0" width="100%"><tr><td><a href="javascript:display(\'listimages\');">Manage Album</a></td><td><div id="send_to_groups"></div></td><td><div id="upload_image"><a href="javascript:showManageAlbum();">Add a Friend</a></div></td></tr></table>';
+	 document.getElementById('login').innerHTML = '<input type="button" name="sendmail" value="CLICK TO SEND!" OnClick="sendMail()" class="Login">';
+	
+	//------------- Get Groups ---
+var extGetGroups = new XMLHttpRequest();
+	extGetGroups.open(
+		"GET",
+		"http://quiclink.com/extension/usergroups.php?action=getusergroups&uid=" + localStorage.getItem("fbuid"),
+		true);
+	extGetGroups.onload = getGroups;
+	extGetGroups.send(null);
+	function getGroups() {
+		xmlDoc = extGetGroups.responseXML; 
+		var groupname	= xmlDoc.getElementsByTagName("groupname");
+		var group_id	= xmlDoc.getElementsByTagName("group_id");
+		var group_image	= xmlDoc.getElementsByTagName("image");
+		uid = localStorage.getItem("fbuid");
+		var hasGroup = false;
+		var select = '<table><tr>';
+		for(i=0;i<groupname.length;i++){			
+		
+			select += '<td class="selGroup" id="selGrp_'+group_id[i].childNodes[0].nodeValue+'">';
+			select += '<div class="txtgroupname">'+groupname[i].childNodes[0].nodeValue.substr(0,6)+'</div>';
+			if(group_image[i].childNodes[0].nodeValue=='none'){
+				select += '<img src="http://quiclink.com/extension/images/no_group.jpg" width="30px" height="30px" onClick="selectGroup('+group_id[i].childNodes[0].nodeValue+')" title="'+groupname[i].childNodes[0].nodeValue+'">';			
+			}else{			
+				select += '<img src="http://quiclink.com/extension/images/'+uid+'/group_images/'+group_image[i].childNodes[0].nodeValue+'"  width="30px" height="30px" onClick="selectGroup('+group_id[i].childNodes[0].nodeValue+')" title="'+groupname[i].childNodes[0].nodeValue+'">';
+			}
+			select += '</td>';
+			var hasGroup = true;
+		}
+		select += '</tr></table>';
+		if(hasGroup == true){
+			var group_input = '<input type="hidden" name="send_to_group_selected" id="send_to_group_selected" value="0">';
+			//var sendToGroup = '<a href="javascript:void(0)" onClick="sendToGroup()">Send to Group</a>';
+
+			document.getElementById("send_to_groups").innerHTML = select + group_input;
+		}
+	}*/
+//-------------- GET GROUP Ends ---
+}
+
+
+function generatePagingLinks(totFriends,friendsPerPage){
+
+	var totPages = Math.ceil(totFriends/friendsPerPage);
+	pageNumbers = '';
+	var goNext ='';
+	var goPrev ='';
+	if((totPages)>1){
+		//var goNext = '<a href="javascript:void(0)" onClick="moveNext(' + friendsPerPage + ',' + totFriends +')">><a>';
+		//var goPrev = '<a href="javascript:void(0)" onClick="movePrev(' + friendsPerPage + ',' + totFriends +')"><<a>';
+		for(page = 1; page <= totPages; page++){
+			seperator = '|';
+			if(page==totPages) seperator = '';
+			pageLinks = '<a class="pagingAnchorLinks" href="javascript:void(0)" onClick="GoToPageNumber(' + page + ','+ friendsPerPage +','+ totFriends +')">' + page + '</a>';
+			pageNumbers = pageNumbers +   pageLinks + seperator  ; 				
+		}
+		
+		document.getElementById('pagingLinks').innerHTML = '<div class="pager">' + goPrev + '|' + pageNumbers + '|' + goNext + '</div>';
+	}else{
+		document.getElementById('pagingLinks').innerHTML = '';
+	}
+}
+
+
+function movePrev(friendsPerPage,totFriends){
+	var pageNumber = parseInt(document.getElementById("selectedPage").value) - parseInt(1);
+	GoToPageNumber(pageNumber,friendsPerPage,totFriends);
+}
+
+function moveNext(friendsPerPage,totFriends){
+	var pageNumber = parseInt(document.getElementById("selectedPage").value) + parseInt(1);
+	GoToPageNumber(pageNumber,friendsPerPage,totFriends);
+}
+
+function GoToPageNumber(pageNumber,friendsPerPage,totFriends){	
+	var currentPage = document.getElementById("selectedPage").value;
+	var closeDivStart = (currentPage * friendsPerPage) - friendsPerPage;
+	var closeDivEnd = (currentPage * friendsPerPage);
+	for(x=closeDivStart;x<closeDivEnd;x++){
+		document.getElementById("myDiv_"+x).style.display = 'none';
+		if((x+1)==totFriends){
+		break;
+		}
+	}
+
+	var openDivStart = (pageNumber * friendsPerPage) - friendsPerPage;
+	var openDivEnd = (pageNumber * friendsPerPage);
+	for(x=openDivStart;x<openDivEnd;x++){
+	
+		document.getElementById("myDiv_"+x).style.display = 'block';
+		if((x+1)==totFriends){
+		break;
+		}
+	}
+	document.getElementById("selectedPage").value = pageNumber;	
+}
+
+
+function display(){
+document.getElementById('selectedTab').value = 'manageTab';
+//processing('loading','Please wait','loading...');
+document.getElementById('pagingLinks').innerHTML = '';
+	document.getElementById('login').innerHTML = '<input type="button" name="loading" value="Loading..." class="Login">';
+	if(localStorage.getItem("fbuid") == 'null'){
+		showLogin();
+	}
+	var sessionData = localStorage.getItem("Mysession");
+	var zeroIndex = sessionData.split('"uid":');
+	var zeroIndex = zeroIndex[1].split(',"email":');
+	var uid = zeroIndex[0];
+	
+	localStorage.setItem("fbuid",uid);
+	
+	var req = new XMLHttpRequest();
+
+	req.open(
+		"GET",
+		"http://quiclink.com/extension/manage.php?getimages=all&uid=" + localStorage.getItem("fbuid"),
+		true);
+	req.onload = getPics;
+	req.send(null);
+	function getPics() {
+		xmlDoc = req.responseXML; 
+		var x=xmlDoc.getElementsByTagName("image");
+		var fid=xmlDoc.getElementsByTagName("fid");
+		var myimg=xmlDoc.getElementsByTagName("myimage");
+		var myusername=xmlDoc.getElementsByTagName("myusername");
+		var friendname=xmlDoc.getElementsByTagName("friendname");
+		var friendemail=xmlDoc.getElementsByTagName("friendemail");
+		var display_order=xmlDoc.getElementsByTagName("display_order");
+		if(myimg[0].childNodes[0].nodeValue=='NO_IMAGE'){
+				profileImagePath = 'http://quiclink.com/extension/images/no_image.gif';
+		  }else{
+		     var profileImagePath = "http://quiclink.com/extension/images/" + localStorage.getItem("fbuid") + '/' + myimg[0].childNodes[0].nodeValue
+		  }
+
+        var hasfriends = false;
+		var ni = document.getElementById('friendPic');
+		ni.setAttribute('class','ui-sortable');
+		var totFriends = 0;
+		var mycols = xmlDoc.getElementsByTagName("mycols");
+		var myrows = xmlDoc.getElementsByTagName("myrows");
+		mycols = mycols[0].childNodes[0].nodeValue;
+		myrows = myrows[0].childNodes[0].nodeValue
+		var editDetailClass = '';
+		var deleteDetailClass = '';
+		if(myrows!='0' && mycols!='0'){
+			var friendsPerPage = mycols*myrows;	
+			var editDetailClass = 'ed'+mycols+myrows;
+			var deleteDetailClass = 'dl'+mycols+myrows;
+		}else{
+			var friendsPerPage = 10;
+			var editDetailClass = 'ed';
+			var deleteDetailClass = 'dl';
+		}
+		 document.getElementById('friendPic').innerHTML = '';
+		for(i=0;i<x.length;i++){
+		
+		  var newFbdiv = document.createElement('div');
+		  var divFbIdName = 'myfb'+fid[i].childNodes[0].nodeValue+'Div';
+		  newFbdiv.setAttribute('id',divFbIdName);
+		  newFbdiv.setAttribute('class',editDetailClass);
+		  newFbdiv.innerHTML = '<a href="javascript:void(0)" onClick="editDetails('+fid[i].childNodes[0].nodeValue+')">Edit Details</a>';
+		//  newFbdiv.setAttribute('style','position:absolute;margin:20px 0 0 0px;background-color:#ccc;opacity: 0.4;color:#000;text-align:center;');
+
+
+		  var newFbDivDelete = document.createElement('div');
+		  var divFbDeleteIdName = 'myfbdel'+fid[i].childNodes[0].nodeValue+'Div';
+		  newFbDivDelete.setAttribute('id',divFbDeleteIdName);
+		   newFbDivDelete.setAttribute('class',deleteDetailClass);
+		  newFbDivDelete.innerHTML = '<a href="javascript:void(0)" onClick="removeImage(\''+ x[i].childNodes[0].nodeValue +'\',\''+ fid[i].childNodes[0].nodeValue +'\')">Delete</a>';
+		  //newFbDivDelete.setAttribute('style','position:absolute;margin:50px 0 0 0px;background-color:#ccc;opacity: 0.4;color:#000;width:110px;text-align:center;');
+
+		  var newdiv = document.createElement('div');
+		  var divIdName = 'myDiv_' + i;
+		  if(i>(friendsPerPage-1)){
+			newdiv.setAttribute('style','display:none');
+		  }
+		  
+		  newdiv.setAttribute('id',divIdName);
+		  if(myrows!='0' && mycols!='0'){
+			newdiv.setAttribute('class',"lbs"+mycols+myrows);
+			var clsSel = mycols+myrows;
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,8);
+			$('body').addClass('body'+mycols+myrows);
+		  }else{
+			newdiv.setAttribute('class',"img lbs");
+			var clsSel = '';
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,15);
+		}
+
+		  
+		  var friendNameDiv = document.createElement("div");
+		  friendNameDiv.setAttribute('id',"friendNameDiv");
+		  friendNameDiv.innerHTML = friendName;
+
+
+		  var myinput = document.createElement("input");		  
+		  myinput.setAttribute('type',"hidden");
+		  myinput.setAttribute('name',"txt_fid");
+		  myinput.setAttribute('id',"txt_fid_"+fid[i].childNodes[0].nodeValue);
+		  myinput.setAttribute('value',display_order[i].childNodes[0].nodeValue);
+		  var img = document.createElement("image");
+
+		  var dbImgStr = x[i].childNodes[0].nodeValue;
+
+		  if (dbImgStr.match(/http.*?/)){
+			img.src = x[i].childNodes[0].nodeValue;
+		  }else if(x[i].childNodes[0].nodeValue!='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/'+ localStorage.getItem("fbuid") + '/' + x[i].childNodes[0].nodeValue;
+		  }
+		  img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  if(x[i].childNodes[0].nodeValue=='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/no_image.gif';
+			img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  }
+		  hasfriends = true;
+		 
+		  newdiv.appendChild(friendNameDiv);
+		  newdiv.appendChild(img);
+		  ni.appendChild(newdiv);
+		  newdiv.appendChild(newFbdiv);
+		  newdiv.appendChild(newFbDivDelete);
+		  
+		  newdiv.appendChild(myinput);
+		  totFriends++;					
+		}
+		//setTimeout('ModalPopups.Close(\"loading\");',2000);
+		if(hasfriends === false){
+			document.getElementById('friendPic').innerHTML = returnHTML('QuicLink','No friend found.','Please click Add friend to add now.');
+		}
+		if(hasfriends === true){
+			generatePagingLinks(totFriends,friendsPerPage);
+		}
+	}
+	
+
+	 document.getElementById('manage_album').innerHTML ='<input type="hidden" name="selectedTab" id="selectedTab" value="managePage"><input type="hidden" name="selectedPage" id="selectedPage" value="1"><table style="padding-top:20px;"><tr><td class="pagetitle"><strong>Title:</strong></td><td><p>'+ document.getElementById('currentTitle').value.substr(0,40) +'...</p></td></tr><tr><td class="pageurl"><strong>URL:</strong></td><td><p>'+ document.getElementById('currentLink').value.substr(0,40) +'...</p></td></tr></table><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td></td><td id="changeOrder"><a href="javascript:void(0)" onclick="changeOrder()">Change Order</td><td><div id="upload_image"><a href="javascript:showManageAlbum();">Add a Friend</a></div></td></tr></table>';
+	 document.getElementById('login').innerHTML = '<input type="button" name="goback" value="CLICK TO GO BACK!" OnClick="goToMainPage(\'all\');" class="Login">';
+
+}
+
+function returnHTML(title,centerContent,fotterContent){
+	return '<div id="idPrompt1_popup" style="border: 1px solid rgb(153, 153, 153); padding: 1px; display: inline; position: absolute; background-color: white; color: black; width: 490px; height: 93px;top:170px;left:32px;"><div id="idPrompt1_popupTitle" style="padding: 5px; position: absolute; font-family: Verdana,Arial; font-size: 9pt; text-align: left; background-color: rgb(193, 210, 231); color: rgb(21, 66, 139); top: 1px; width: 480px; left: 1px;"><strong>'+ title +'</strong></div><div id="idPrompt1_popupBody" style="padding: 5px; position: absolute; font-family: Verdana,Arial; font-size: 9pt; text-align: left; background-color: rgb(199, 214, 233); color: black; height: 46px; top: 24px; width: 480px; left: 1px;">'+ centerContent +'</div><div id="idPrompt1_popupFooter" style="padding: 5px; position: absolute; font-family: Verdana,Arial; font-size: 9pt; text-align: center; background-color: rgb(193, 210, 231); color: rgb(21, 66, 139); top: 70px; width: 480px; left: 1px;">'+ fotterContent +'</div></div>';
+}
+
+function editDetails(fid){
+
+	window.open("http://quiclink.com/extension/editdetails.php?uid="+localStorage.getItem("fbuid")+'&fid='+fid,"QuicLink Edit Details", "width=400,height=300");
+	
+
+}
+
+function displayMessage(id,title,msg){
+
+   ModalPopups.Alert(id,
+        title,
+        "<div style='padding:25px;'>"+ msg +"</div>",
+        {
+            width: 350,
+            height: 100
+        }
+    );
+
+
+}
+
+function processing(id,title,msg) {
+    ModalPopups.Indicator(id,
+        title,
+        "<div style=''>" + 
+        "<div style='float:left;'><img src='spinner.gif'></div>" + 
+        "<div style='float:left; padding-left:10px;'>" + 
+        msg + 
+        "</div>", 
+        {
+            width: 350,
+            height: 100
+        }
+    );
+            
+   
+}
+
+
+
+function removeImage(imageName,fid){
+	processing('delete','Deleting','Deleting...');
+	var req = new XMLHttpRequest();
+	req.open(
+		"GET",
+		"http://quiclink.com/extension/manage.php?delimage=true&uid=" + localStorage.getItem("fbuid")+'&img='+ imageName + '&fid=' + fid,
+		true);
+	req.onload = getPics;
+	req.send(null);
+	function getPics() {
+		setTimeout('ModalPopups.Close(\"delete\");',2000);
+
+		display('all');
+	}
+}
+
+function filterBy(alphaChar){
+var selectedTab = document.getElementById('selectedTab').value;
+   if(selectedTab == 'managePage'){
+		goToManagePage(alphaChar);
+   }
+   else{
+		goToMainPage(alphaChar);
+   }
+
+}
+
+function goToManagePage(alphaChar){
+	document.getElementById('selectedTab').value = 'managePage';
+	//processing('loading','Please wait','loading...');
+	document.getElementById('pagingLinks').innerHTML = '';
+	document.getElementById('login').innerHTML = '<input type="button" name="loading" value="Loading..." class="Login">';
+	if(localStorage.getItem("fbuid") == 'null'){
+		showLogin();
+	}
+	var sessionData = localStorage.getItem("Mysession");
+	var zeroIndex = sessionData.split('"uid":');
+	var zeroIndex = zeroIndex[1].split(',"email":');
+	var uid = zeroIndex[0];
+
+	localStorage.setItem("fbuid",uid);
+	
+	var req = new XMLHttpRequest();
+
+	req.open(
+		"GET",
+		"http://quiclink.com/extension/manage.php?getimages="+ alphaChar +"&uid=" + localStorage.getItem("fbuid"),
+		true);
+	req.onload = getPics;
+	req.send(null);
+	function getPics() {
+		xmlDoc = req.responseXML; 
+		var x=xmlDoc.getElementsByTagName("image");
+		var fid=xmlDoc.getElementsByTagName("fid");
+		var myimg=xmlDoc.getElementsByTagName("myimage");
+		var myusername=xmlDoc.getElementsByTagName("myusername");
+		var friendname=xmlDoc.getElementsByTagName("friendname");
+		var friendemail=xmlDoc.getElementsByTagName("friendemail");
+		if(myimg[0].childNodes[0].nodeValue=='NO_IMAGE'){
+				profileImagePath = 'http://quiclink.com/extension/images/no_image.gif';
+		  }else{
+		     var profileImagePath = "http://quiclink.com/extension/images/" + localStorage.getItem("fbuid") + '/' + myimg[0].childNodes[0].nodeValue
+		  }
+
+        var hasfriends = false;
+		var ni = document.getElementById('friendPic');
+		var totFriends = 0;
+		var mycols = xmlDoc.getElementsByTagName("mycols");
+		var myrows = xmlDoc.getElementsByTagName("myrows");
+		mycols = mycols[0].childNodes[0].nodeValue;
+		myrows = myrows[0].childNodes[0].nodeValue;
+		var editDetailClass = '';
+		var deleteDetailClass = '';
+		if(myrows!='0' && mycols!='0'){
+			var friendsPerPage = mycols*myrows;	
+			var editDetailClass = 'ed'+mycols+myrows;
+			var deleteDetailClass = 'dl'+mycols+myrows;
+		}else{
+			var friendsPerPage = 10;
+			var editDetailClass = 'ed';
+			var deleteDetailClass = 'dl';
+		}	
+	
+		 document.getElementById('friendPic').innerHTML = '';
+		for(i=0;i<x.length;i++){
+		
+		  var newFbdiv = document.createElement('div');
+		  var divFbIdName = 'myfb'+fid[i].childNodes[0].nodeValue+'Div';
+		  newFbdiv.setAttribute('id',divFbIdName);
+		  newFbdiv.setAttribute('class',editDetailClass);
+		  newFbdiv.innerHTML = '<a href="javascript:void(0)" onClick="editDetails('+fid[i].childNodes[0].nodeValue+')">Edit Details</a>';
+		  //newFbdiv.setAttribute('style','position:absolute;margin:20px 0 0 0px;background-color:#ccc;opacity: 0.4;color:#000;width:110px;text-align:center;');
+
+
+		  var newFbDivDelete = document.createElement('div');
+		  var divFbDeleteIdName = 'myfb'+fid[i].childNodes[0].nodeValue+'Div';
+		  newFbDivDelete.setAttribute('id',divFbDeleteIdName);
+		  newFbDivDelete.setAttribute('class',deleteDetailClass);
+		  newFbDivDelete.innerHTML = '<a href="javascript:void(0)" onClick="removeImage(\''+ x[i].childNodes[0].nodeValue +'\',\''+ fid[i].childNodes[0].nodeValue +'\')">Delete</a>';
+		  //newFbDivDelete.setAttribute('style','position:absolute;margin:50px 0 0 0px;background-color:#ccc;opacity: 0.4;color:#000;width:110px;text-align:center;');
+
+		  var newdiv = document.createElement('div');
+		  var divIdName = 'myDiv_' + i;
+		  if(i>(friendsPerPage-1)){
+			newdiv.setAttribute('style','display:none');
+		  }
+		  
+		  newdiv.setAttribute('id',divIdName);
+		  if(myrows!='0' && mycols!='0'){
+			newdiv.setAttribute('class',"lbs"+mycols+myrows);
+			var clsSel = mycols+myrows;
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,8);
+			$('body').addClass('body'+mycols+myrows);
+		  }else{
+     		newdiv.setAttribute('class',"img lbs");
+			var clsSel = '';
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,15);
+		}
+
+
+
+		  var friendNameDiv = document.createElement("div");
+		  friendNameDiv.setAttribute('id',"friendNameDiv");
+		  friendNameDiv.innerHTML = friendName;
+
+
+		  var myinput = document.createElement("input");		  
+		  myinput.setAttribute('type',"hidden");
+		  myinput.setAttribute('name',"txt_fid");
+		  myinput.setAttribute('id',"txt_fid_"+fid[i].childNodes[0].nodeValue);
+		  myinput.setAttribute('value',"0");
+		  var img = document.createElement("image");
+
+		  var dbImgStr = x[i].childNodes[0].nodeValue;
+
+		  if (dbImgStr.match(/http.*?/)){
+			img.src = x[i].childNodes[0].nodeValue;
+		  }else if(x[i].childNodes[0].nodeValue!='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/'+ localStorage.getItem("fbuid") + '/' + x[i].childNodes[0].nodeValue;
+		  }
+		  img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  if(x[i].childNodes[0].nodeValue=='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/no_image.gif';
+			img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  }
+		  hasfriends = true;
+		 
+		  newdiv.appendChild(friendNameDiv);
+		  newdiv.appendChild(img);
+		  ni.appendChild(newdiv);
+		  newdiv.appendChild(newFbdiv);
+		  newdiv.appendChild(newFbDivDelete);
+		  
+		  newdiv.appendChild(myinput);
+		  totFriends++;					
+		}
+		//setTimeout('ModalPopups.Close(\"loading\");',2000);
+		if(hasfriends === false){
+			//displayMessage('loadingmsg','QuicLink message','No friends found.');
+			//setTimeout('ModalPopups.Close(\"loadingmsg\");',2000);
+			document.getElementById('friendPic').innerHTML = '<div id="idPrompt1_popup" style="border: 1px solid rgb(153, 153, 153); padding: 1px; display: inline; position: absolute; background-color: white; color: black; width: 300px; height: 93px;top:170px;left:32px;"><div id="idPrompt1_popupTitle" style="padding: 5px; position: absolute; font-family: Verdana,Arial; font-size: 9pt; text-align: left; background-color: rgb(193, 210, 231); color: rgb(21, 66, 139); top: 1px; width: 290px; left: 1px;"><strong>QuicLink</strong></div><div id="idPrompt1_popupBody" style="padding: 5px; position: absolute; font-family: Verdana,Arial; font-size: 9pt; text-align: left; background-color: rgb(199, 214, 233); color: black; height: 46px; top: 24px; width: 290px; left: 1px;">No friend found.</div><div id="idPrompt1_popupFooter" style="padding: 5px; position: absolute; font-family: Verdana,Arial; font-size: 9pt; text-align: center; background-color: rgb(193, 210, 231); color: rgb(21, 66, 139); top: 70px; width: 290px; left: 1px;">Please click Add friend to add now.</div></div>';
+		}
+		if(hasfriends === true){
+			generatePagingLinks(totFriends,friendsPerPage);
+		}
+	}
+	
+
+	 //document.getElementById('manage_album').innerHTML ='<input type="hidden" name="selectedTab" id="selectedTab" value="managePage"><input type="hidden" name="selectedPage" id="selectedPage" value="1"><table style="padding-top:20px;"><tr><td class="pagetitle"><strong>Title:</strong></td><td><p>'+ document.getElementById('currentTitle').value.substr(0,40) +'...</p></td></tr><tr><td class="pageurl"><strong>URL:</strong></td><td><p>'+ document.getElementById('currentLink').value.substr(0,40) +'...</p></td></tr></table><table cellspacing="0" cellpadding="0" width="100%"><tr><td></td><td><div id="upload_image"><a href="javascript:showManageAlbum();">Add a Friend</a></div></td></tr></table>';
+	 document.getElementById('login').innerHTML = '<input type="button" name="goback" value="CLICK TO GO BACK!" OnClick="goToMainPage(\'all\');" class="Login">';
+}
+
+function goToMainPage(alphaChar){
+
+document.getElementById('selectedTab').value = 'mainPage';
+//processing('loading','Please wait','loading...');
+document.getElementById('pagingLinks').innerHTML = '';
+	document.getElementById('login').innerHTML = '<input type="button" name="loading" value="Loading..." class="Login">';
+	if(localStorage.getItem("fbuid") == 'null'){
+		showLogin();
+	}
+	var sessionData = localStorage.getItem("Mysession");
+	var zeroIndex = sessionData.split('"uid":');
+	var zeroIndex = zeroIndex[1].split(',"email":');
+	var uid = zeroIndex[0];
+	
+	localStorage.setItem("fbuid",uid);
+	
+	var req = new XMLHttpRequest();
+
+	req.open(
+		"GET",
+		"http://quiclink.com/extension/manage.php?getimages="+ alphaChar +"&uid=" + localStorage.getItem("fbuid"),
+		true);
+	req.onload = getPics;
+	req.send(null);
+	function getPics() {
+		xmlDoc = req.responseXML; 
+		var x=xmlDoc.getElementsByTagName("image");
+		var fid=xmlDoc.getElementsByTagName("fid");
+		var myimg=xmlDoc.getElementsByTagName("myimage");
+		var myusername=xmlDoc.getElementsByTagName("myusername");
+		var friendname=xmlDoc.getElementsByTagName("friendname");
+		var friendemail=xmlDoc.getElementsByTagName("friendemail");
+		if(myimg[0].childNodes[0].nodeValue=='NO_IMAGE'){
+				profileImagePath = 'http://quiclink.com/extension/images/no_image.gif';
+		  }else{
+		     var profileImagePath = "http://quiclink.com/extension/images/" + localStorage.getItem("fbuid") + '/' + myimg[0].childNodes[0].nodeValue
+		  }
+
+        var hasfriends = false;
+		var ni = document.getElementById('friendPic');
+		var totFriends = 0;
+		var mycols = xmlDoc.getElementsByTagName("mycols");
+		var myrows = xmlDoc.getElementsByTagName("myrows");
+		mycols = mycols[0].childNodes[0].nodeValue;
+		myrows = myrows[0].childNodes[0].nodeValue
+		if(myrows!='0' && mycols!='0'){
+			var friendsPerPage = mycols*myrows;	
+		}else{
+			var friendsPerPage = 10;
+		}
+		 document.getElementById('friendPic').innerHTML = '';
+		for(i=0;i<x.length;i++){
+		  var newdiv = document.createElement('div');
+		  var divIdName = 'myDiv_' + i;
+		  if(i>(friendsPerPage-1)){
+			newdiv.setAttribute('style','display:none');
+		  }
+		  
+		  newdiv.setAttribute('id',divIdName);
+
+		if(myrows!='0' && mycols!='0'){
+			newdiv.setAttribute('class',"lbs"+mycols+myrows);
+			var clsSel = mycols+myrows;
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,8);
+			$('body').addClass('body'+mycols+myrows);
+		  }else{
+			newdiv.setAttribute('class',"lbs");
+			var clsSel = '';
+			var friendName = friendname[i].childNodes[0].nodeValue.substr(0,15);
+		}
+
+		  var friendNameDiv = document.createElement("div");
+		  friendNameDiv.setAttribute('id',"friendNameDiv");
+		  friendNameDiv.innerHTML = friendName;
+
+
+		  var myinput = document.createElement("input");		  
+		  myinput.setAttribute('type',"hidden");
+		  myinput.setAttribute('name',"txt_fid");
+		  myinput.setAttribute('id',"txt_fid_"+fid[i].childNodes[0].nodeValue);
+		  myinput.setAttribute('value',"0");
+		  var img = document.createElement("image");
+		  img.setAttribute('OnClick',"selectFriend('"+  fid[i].childNodes[0].nodeValue +"','"+ divIdName +"','"+ clsSel +"')");
+		  var dbImgStr = x[i].childNodes[0].nodeValue;
+
+		  if (dbImgStr.match(/http.*?/)){
+			img.src = x[i].childNodes[0].nodeValue;
+		  }else if(x[i].childNodes[0].nodeValue!='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/'+ localStorage.getItem("fbuid") + '/' + x[i].childNodes[0].nodeValue;
+		  }
+		  img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  if(x[i].childNodes[0].nodeValue=='NO_IMAGE'){
+			img.src = 'http://quiclink.com/extension/images/no_image.gif';
+			img.title = friendname[i].childNodes[0].nodeValue + "\n" + friendemail[i].childNodes[0].nodeValue;
+		  }		  
+		  hasfriends = true;
+		 
+		  newdiv.appendChild(friendNameDiv);
+		  newdiv.appendChild(img);
+		  ni.appendChild(newdiv);
+		  newdiv.appendChild(myinput);
+		  totFriends++;					
+		}
+		
+		if(hasfriends === false){
+			
+			displayMessage('displayMessageQuicLinkId','QuicLink Error','No friends found.');
+			setTimeout('ModalPopups.Close(\"displayMessageQuicLinkId\");',2000);;
+			filterBy('all');
+			
+			
+		}
+		if(hasfriends === true){
+			generatePagingLinks(totFriends,friendsPerPage);
+		}
+	}
+	
+
+	 // document.getElementById('manage_album').innerHTML ='<input type="hidden" name="selectedTab" id="selectedTab" value="mainPage"><input type="hidden" name="selectedPage" id="selectedPage" value="1"><table style="padding-top:20px;"><tr><td class="pagetitle"><strong>Title:</strong></td><td><p>'+ document.getElementById('currentTitle').value.substr(0,40) +'...</p></td></tr><tr><td class="pageurl"><strong>URL:</strong></td><td><p>'+ document.getElementById('currentLink').value.substr(0,40) +'...</p></td></tr></table><table cellspacing="0" cellpadding="0" width="100%"><tr><td><a href="javascript:display(\'listimages\');">Manage Album</a></td><td><div id="send_to_groups"></div></td><td><div id="upload_image"><a href="javascript:showManageAlbum();">Add a Friend</a></div></td></tr></table>';
+	 //document.getElementById('login').innerHTML = '<input type="button" name="sendmail" value="CLICK TO SEND!" OnClick="sendMail()" class="Login">';
+	
+	//------------- Get Groups ---
+var extGetGroups = new XMLHttpRequest();
+	extGetGroups.open(
+		"GET",
+		"http://quiclink.com/extension/usergroups.php?action=getusergroups&uid=" + localStorage.getItem("fbuid"),
+		true);
+	extGetGroups.onload = getGroups;
+	extGetGroups.send(null);
+	function getGroups() {
+		xmlDoc = extGetGroups.responseXML; 
+		var groupname	= xmlDoc.getElementsByTagName("groupname");
+		var group_id	= xmlDoc.getElementsByTagName("group_id");
+		var group_image	= xmlDoc.getElementsByTagName("image");
+		uid = localStorage.getItem("fbuid");
+		var hasGroup = false;
+		var select = '<table><tr>';
+		for(i=0;i<groupname.length;i++){			
+		
+			select += '<td class="selGroup" id="selGrp_'+group_id[i].childNodes[0].nodeValue+'">';
+			select += '<div class="txtgroupname">'+groupname[i].childNodes[0].nodeValue.substr(0,6)+'</div>';
+			if(group_image[i].childNodes[0].nodeValue=='none'){
+				select += '<img src="http://quiclink.com/extension/images/no_group.jpg" width="30px" height="30px" onClick="selectGroup('+group_id[i].childNodes[0].nodeValue+')" title="'+groupname[i].childNodes[0].nodeValue+'">';			
+			}else{			
+				select += '<img src="http://quiclink.com/extension/images/'+uid+'/group_images/'+group_image[i].childNodes[0].nodeValue+'"  width="30px" height="30px" onClick="selectGroup('+group_id[i].childNodes[0].nodeValue+')" title="'+groupname[i].childNodes[0].nodeValue+'">';
+			}
+			select += '</td>';
+			var hasGroup = true;
+		}
+		select += '</tr></table>';
+		if(hasGroup == true){
+			var group_input = '<input type="hidden" name="send_to_group_selected" id="send_to_group_selected" value="0">';
+			//var sendToGroup = '<a href="javascript:void(0)" onClick="sendToGroup()">Send to Group</a>';
+
+			document.getElementById("send_to_groups").innerHTML = select + group_input;
+		}
+	}
+//-------------- GET GROUP Ends ---
+}
+
+
+
+
+function goToMainPageColsRows(params){
+
+var txt = params.split(","); 
+
+cols = txt[0];
+rows = txt[1];
+
+var req = new XMLHttpRequest();
+	req.open(
+		"GET",
+		"http://quiclink.com/extension/userpref.php?uid=" + localStorage.getItem("fbuid")+ '&cols='+ cols + '&rows=' +rows,
+		true);
+	req.onload = reLoad;
+	req.send(null);
+	function reLoad(){
+	
+	location.reload();
+	}
+	
+
+}
+
+
+function ModalPopupsCustom1() {
+	var oldMessage = jQuery('#messageNote').val();
+    ModalPopups.Custom("idCustom1",
+        "Enter message",
+
+        "<table>" + 
+        "<tr><td><textarea name='inputCustom1Name' id='inputCustom1Name' cols='33' rows='3' maxlength='100' style='resize: none;'>" + oldMessage + "</textarea></td></tr>" + 
+        "</table>" , 
+        {
+            width: 300,
+            buttons: "ok,cancel",
+            okButtonText: "Save",
+            cancelButtonText: "Cancel",
+            onOk: "ModalPopupsCustom1Save()",
+            onCancel: "ModalPopupsCustom1Cancel()"
+        }
+    );
+            
+    ModalPopups.GetCustomControl("inputCustom1Name").focus(); 
+}
+function ModalPopupsCustom1Save() {
+    var custom1Name = ModalPopups.GetCustomControl("inputCustom1Name"); 
+    if(jQuery.trim(custom1Name.value) == "") {
+		jQuery('#idCustom1_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>Please enter message.</b></td></tr></tbody></table>');
+        custom1Name.focus();
+    }
+    else {		
+		jQuery('#messageNote').val(custom1Name.value);
+        ModalPopups.Close("idCustom1");
+    }
+}
+
+function ModalPopupsCustom1Cancel() {
+    ModalPopups.Cancel("idCustom1");
+}
+
+function sendToGroup(){
+var clicktime = Math.round(new Date().getTime() / 1000);
+	var groupid = document.getElementById('selusergroups').value;
+		processing('processingQuicLinkId','Please wait','Sending...');
+		var req = new XMLHttpRequest();
+		req.open(
+			"GET",	
+			"http://quiclink.com/extension/manage.php?action=sendToGroup&groupid=" + groupid + '&pagetitle='+document.getElementById('currentTitle').value+'&pagelink='+document.getElementById('currentLink').value+'&message='+jQuery('#messageNote').val()+ '&clicktime=' + clicktime+'&loadtime='+loadtime,
+			true);
+		req.onload = getPics;
+		req.send(null);
+
+		function getPics() {
+			 
+			 setTimeout('ModalPopups.Close(\"processingQuicLinkId\");');
+			 displayMessage('displayMessageQuicLinkId','QuicLink Success','Mail sent sucessfully...<br>QuicLink will close automatically');
+			 setTimeout('ModalPopups.Close(\"displayMessageQuicLinkId\");',2000);
+			 setTimeout('closeExtension()',2000);
+		}
+}
+
+function changeOrder(){
+/*
+	var txt_fid = document.getElementsByName("txt_fid").length;
+	var sortableArr = new Array();
+	for(i=0;i<txt_fid;i++){
+		 var someId = document.getElementsByName("txt_fid")[i].id;
+		 document.getElementById(someId).type = "text";
+			var fid = someId.split('_');
+			fid = fid[2];			
+		document.getElementById('myfb'+fid+'Div').style.display = 'none';
+		document.getElementById('myfbdel'+fid+'Div').style.display = 'none';
+		document.getElementById(someId).className = 'drag';
+	}
+	document.getElementById('changeOrder').innerHTML  = '<a href="javascript:void(0)" onclick="saveOrder()">Save Order';
+	*/
+	window.open('http://quiclink.com/extension/changeorder.php?uid='+ localStorage.getItem("fbuid"),'QuicLink Change Order');
+
+}
+
+
+function saveOrder(){
+	var txt_fid = document.getElementsByName("txt_fid").length;
+
+	var sortableArr = new Array();
+	for(i=0;i<txt_fid;i++){
+        var splited = document.getElementsByName("txt_fid")[i].id.split('_');
+		sortableArr[i] = document.getElementsByName("txt_fid")[i].value + '_' + splited[2];
+	}
+	var order = 'uid='+ localStorage.getItem("fbuid") +'&order='+sortableArr + '&action=updateRecordsListings'; 
+	$.post("http://quiclink.com/extension/saveorder.php", order, function(theResponse){
+		var txt_fid = document.getElementsByName("txt_fid").length;
+		var sortableArr = new Array();
+		for(i=0;i<txt_fid;i++){
+			 var someId = document.getElementsByName("txt_fid")[i].id;
+			 document.getElementById(someId).type = "hidden";
+				var fid = someId.split('_');
+				fid = fid[2];			
+			document.getElementById('myfb'+fid+'Div').style.display = '';
+			document.getElementById('myfbdel'+fid+'Div').style.display = '';
+			document.getElementById(someId).className = '';
+		}
+		document.getElementById('changeOrder').innerHTML  = '<a href="javascript:void(0)" onclick="changeOrder()">Change Order';
+			
+	}); 
+
+}
+
+
+
+
+
+function switchUser() {
+	switched_Users = localStorage.getItem("switched_Users_Session");
+	
+	if(switched_Users ==''){
+		localStorage.removeItem("switched_Users_Session");
+	}
+	additionalTr = '';
+	if(switched_Users != null && switched_Users != 'undefined'){
+		var valueSplited = switched_Users.split('|#|');
+
+		var additionalTr = '<tr><td><fieldset><table cellspacing="0" cellpadding="0" width="100%">';
+		jQuery.each(valueSplited, function(key, value) { 
+		  //alert(key + ': ' + value); 
+			var arrUserValues = value.split('|##|');
+
+			currentLoggedInUser = localStorage.getItem("fbuid");
+			if(arrUserValues[0]!= currentLoggedInUser){
+				additionalTr += "<tr id=trSwitchUser"+ arrUserValues[0] +"><td width='15px'><input type='radio' onClick=\"goForDirectLogin('"+ arrUserValues[0] +"')\" name='radio_switchusername' value='"+ arrUserValues[0] +"' id='radio_switchusername' class='radioSwitch'></td><td class='switchText'>"+ arrUserValues[1] +"</td><td class='switchDelete'><a href='javascript:void(0)' onClick=\"removeSwitchUser('"+value+"','trSwitchUser"+arrUserValues[0]+"')\">x</a></td></tr>";
+		    }
+		});
+		additionalTr += '</td></tr></table></fieldset>';
+	}
+    ModalPopups.Custom("switchUser",
+        "Switch user",
+        "<table cellspacing='0' cellpadding='2' width='100%'>" + additionalTr+
+        "<tr><td><fieldset><table><tr><td class='switchText'>Username:</td><td><input type='text' name='txt_switchusername' id='txt_switchusername' class='inputSwitch'></td></tr>" + 
+		"<tr><td class='switchText'>Password:</td><td><input type='password' name='txt_switchuserpass' id='txt_switchuserpass' class='inputSwitch'></td></tr></table></fieldset></td></tr>" + 
+		
+        "</table>" , 
+        {
+            width: 300,
+            buttons: "ok,cancel",
+            okButtonText: "Switch",
+            cancelButtonText: "Cancel",
+            onOk: "ModalPopupsSwitchUserSave()",
+            onCancel: "ModalPopupsSwitchUserCancel()"
+        }
+    );
+            
+    ModalPopups.GetCustomControl("txt_switchusername").focus(); 
+}
+function ModalPopupsSwitchUserSave() {
+    var txt_switchusername = ModalPopups.GetCustomControl("txt_switchusername"); 
+	var txt_switchuserpass = ModalPopups.GetCustomControl("txt_switchuserpass"); 
+    if(jQuery.trim(txt_switchusername.value) == "") {
+		jQuery('#switchUser_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>Please enter username.</b></td></tr></tbody></table>');
+        txt_switchusername.focus();
+    }
+	else if(jQuery.trim(txt_switchuserpass.value) == "") {
+		jQuery('switchUser_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>Please enter password.</b></td></tr></tbody></table>');
+        txt_switchuserpass.focus();
+    }
+    else {		
+		
+		goForLogin();
+      //  ModalPopups.Close("switchUser");
+    }
+}
+
+function ModalPopupsSwitchUserCancel() {
+    ModalPopups.Cancel("switchUser");
+}
+
+
+
+
+function goForLogin(){
+	var order = "username="+ txt_switchusername.value +"&password=" + txt_switchuserpass.value
+	jQuery.post("http://quiclink.com/extension/switchuser.php",order, function(theResponse){
+		
+
+		var msg = '';
+			if(theResponse=='INVALID_USER'){
+				msg = 'Invalid user';
+				jQuery('#switchUser_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>'+ msg +'</b></td></tr></tbody></table>');
+				
+			}
+			if(theResponse=='INACTIVE_USER'){
+				msg = 'Account not active';
+				jQuery('#switchUser_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>'+ msg +'</b></td></tr></tbody></table>');
+			}
+			
+			var zeroIndex = theResponse.split(' # ');
+			if(zeroIndex[0]=='SUCCESS_USER'){
+				//--- Store old users
+				switched_Users = localStorage.getItem("switched_Users_Session");
+				if(switched_Users==null || switched_Users=='undefined'){
+					var switched_Users = new Array(); // regular array (add an optional integer
+					switched_Users = localStorage.getItem("fbuid")+ '|##|' +localStorage.getItem("uname");
+					localStorage.setItem("switched_Users_Session", switched_Users);
+				}else{
+				var arrSplit = switched_Users.split('|#|');
+
+					if(jQuery.inArray(localStorage.getItem("fbuid")+ '|##|' +localStorage.getItem("uname"), arrSplit)=='-1'){
+						var newIndex = (switched_Users.length + 1);
+						switched_Users +='|#|';
+						switched_Users += localStorage.getItem("fbuid")+ '|##|' +localStorage.getItem("uname");
+						localStorage.setItem("switched_Users_Session",switched_Users);
+					}
+				}
+
+				
+				//---- Store old users Ends
+				var newSession = zeroIndex[1];				
+				localStorage.setItem("Mysession",newSession);
+				
+				location.reload();				
+			}
+
+			
+		
+	});
+}
+
+
+function removeSwitchUser(str,trId){
+    switched_Users = localStorage.getItem("switched_Users_Session");
+	
+	var valueSplited = switched_Users.split('|#|');
+    var removeItem = str;
+    valueSplited = jQuery.grep(valueSplited, function(value) {   
+      return value != removeItem;   
+    });
+   var newvalue = '';
+    valueSplitedLength = valueSplited.length;	
+	var i = 1;
+	jQuery.each(valueSplited, function(key, value) { 
+		var append ='';
+		
+		if(i!=valueSplitedLength)
+		{
+			append = '|#|';
+		}
+		newvalue += value + append; 
+		i++;
+	});
+//alert(newvalue);
+localStorage.setItem("switched_Users_Session",newvalue);
+if(newvalue==''){ localStorage.removeItem("switched_Users_Session"); }
+ ModalPopups.Close("switchUser");
+switchUser();
+}
+
+function goForDirectLogin(userid){
+	
+	var order = "uid="+ userid;
+	jQuery.post("http://quiclink.com/extension/switchdirectlogin.php",order, function(theResponse){
+		
+
+		var msg = '';
+			if(theResponse=='INVALID_USER'){
+				msg = 'Invalid user';
+				jQuery('#switchUser_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>'+ msg +'</b></td></tr></tbody></table>');
+				
+			}
+			if(theResponse=='INACTIVE_USER'){
+				msg = 'Account not active';
+				jQuery('#switchUser_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>'+ msg +'</b></td></tr></tbody></table>');
+			}
+			
+			var zeroIndex = theResponse.split(' # ');
+			if(zeroIndex[0]=='SUCCESS_USER'){
+				//--- Store old users
+				switched_Users = localStorage.getItem("switched_Users_Session");
+				if(switched_Users==null || switched_Users=='undefined'){
+					var switched_Users = new Array(); // regular array (add an optional integer
+					switched_Users = localStorage.getItem("fbuid")+ '|##|' +localStorage.getItem("uname");
+					localStorage.setItem("switched_Users_Session", switched_Users);
+				}else{
+				var arrSplit = switched_Users.split('|#|');
+
+					if(jQuery.inArray(localStorage.getItem("fbuid")+ '|##|' +localStorage.getItem("uname"), arrSplit)=='-1'){
+						var newIndex = (switched_Users.length + 1);
+						switched_Users +='|#|';
+						switched_Users += localStorage.getItem("fbuid")+ '|##|' +localStorage.getItem("uname");
+						localStorage.setItem("switched_Users_Session",switched_Users);
+					}
+				}
+
+				
+				//---- Store old users Ends
+				var newSession = zeroIndex[1];				
+				localStorage.setItem("Mysession",newSession);
+				
+				location.reload();				
+			}
+
+			
+		
+	});
+
+}
+
+function selectGroup(group_id){
+	var appliedClass = jQuery('#selGrp_'+group_id).attr('class');
+	if(appliedClass=='selGroup'){
+		jQuery('#selGrp_'+group_id).removeClass('selGroup').addClass('selectedGroup');		
+		var send_to_group_selected = jQuery('#send_to_group_selected').val();
+		if(send_to_group_selected=='0'){
+			jQuery('#send_to_group_selected').val(group_id);
+		}else{			
+			jQuery('#send_to_group_selected').val(send_to_group_selected + ',' + group_id);
+		}
+		
+	}else{
+		jQuery('#selGrp_'+group_id).removeClass('selectedGroup').addClass('selGroup');
+		var send_to_group_selected = jQuery('#send_to_group_selected').val();
+		var send_to_group_selected_splited = send_to_group_selected.split(',');
+		var removeItem = group_id;
+		valueSplited = jQuery.grep(send_to_group_selected_splited, function(value) {   
+		  return value != removeItem;   
+		});
+		if(valueSplited==''){
+			valueSplited = 0;
+		}
+		jQuery('#send_to_group_selected').val(valueSplited);
+	}
+	
+
+}
+
+
+function changePic(){
+
+	window.open('http://quiclink.com/extension/updateprofile.php?uid='+ localStorage.getItem("fbuid"),'QuicLink Update profile','height=280,width=380');
+
+}
+
+
+function sendFeedBack() {
+	
+
+	var additionalTr = '<fieldset><table cellspacing="0" cellpadding="0" width="100%">';
+	additionalTr += '<tr>';
+
+	additionalTr += '<td>';
+	additionalTr += '<textarea maxlength="200" name="feedback_content" id="feedback_content" cols="40" rows="7"></textarea>';
+	additionalTr += '</td>';
+
+	additionalTr += '</tr>';
+	additionalTr += '</table></fieldset>';
+	
+    ModalPopups.Custom("Feedback",
+        "Feedback",
+          additionalTr
+         , 
+        {
+            width: 380,
+            buttons: "ok,cancel",
+            okButtonText: "Send",
+            cancelButtonText: "Cancel",
+            onOk: "ModalPopupsFeedBackSave()",
+            onCancel: "ModalPopupsFeedBackCancel()"
+        }
+    );
+            
+    ModalPopups.GetCustomControl("feedback_content").focus(); 
+}
+
+function ModalPopupsFeedBackSave() {
+    var feedback_content = ModalPopups.GetCustomControl("feedback_content"); 
+    if(jQuery.trim(feedback_content.value) == "") {
+		jQuery('#Feedback_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>Please enter content.</b></td></tr></tbody></table>');
+        feedback_content.focus();
+    }
+    else {		
+		
+		submitFeedBack();
+    }
+}
+
+function ModalPopupsFeedBackCancel() {
+    ModalPopups.Cancel("Feedback");
+}
+
+function submitFeedBack(){
+
+var order = "feedback_content="+ feedback_content.value +"&uid=" + localStorage.getItem("fbuid")
+	jQuery.post("http://quiclink.com/extension/feedback.php",order, function(theResponse){
+		
+
+		var msg = '';
+			if(theResponse=='FAILED'){
+				msg = 'Sending failed please try later.';
+				jQuery('#Feedback_popupTitle').html('<table cellpadding="0" cellspacing="0" style="border: 0;" height="100%"><tbody><tr><td valign="middle" class="error"><b>'+ msg +'</b></td></tr></tbody></table>');
+				
+			}
+			
+			if(theResponse=='SUCCESS'){
+				ModalPopups.Close("Feedback");
+			}
+
+			
+		
+	});
+
+}
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,112 @@
+#blogs:after, #blocks:after, #images:after
+{
+	clear: both;
+	content: ".";
+	display: block;
+	font-size: 0;
+	height: 0;
+}
+BODY
+{
+	font: 10pt/1em Helvetica;
+}
+#page
+{
+	height: auto;
+	margin: 0px auto;
+	position: relative;
+	width: 500px;
+}
+#page H1
+{
+	color: #2F2F2F;
+	font: normal bold 23.4pt/1em Helvetica;
+	margin: 50px 0;
+	text-align: center;
+}
+#page H3
+{
+	padding: 15px;
+}
+#page>.ui-widget-content
+{
+	margin: 0 auto 45px;
+	padding: 20px 15px;
+}
+#page>.ui-widget-content H3
+{
+	font: normal bold 11.5pt/1em Helvetica;
+	margin: 0 0 15px;
+}
+#blocks, #images, #table, #blogs
+{
+	width: 380px;
+}
+#blocks .block
+{
+	float: left;
+	height: 46px;
+	margin: 14px;
+	width: 46px;
+}
+#blocks .block P
+{
+	font: 8.4pt/4.2em Tahoma;
+	height: 100%;
+	margin: 0;
+	text-align: center;
+	width: 100%;
+}
+#images IMG
+{
+	float: left;
+	margin: 14px;
+}
+#blogs H4, #blogs H5
+{
+	margin: 0 0 5px 5px;
+}
+#blogs .blog
+{
+	padding: 10px 30px;
+}
+#blogs P
+{
+	padding: 10px;
+}
+#blogs HR
+{
+	border-color: #87B7DB !important;
+	margin: 0px 0;
+}
+#table
+{
+	width: 380px;
+}
+TABLE TH
+{
+	width: 70px;
+}
+TABLE TD
+{
+	font: 0.8em/1em Helvetica;
+	padding: 6px;
+}
+.link-container
+{
+	display: block;
+	float: right;
+	height: auto;
+	margin: 20px 10px 0px 0px;
+	position: relative;
+	width: auto;
+}
+.pagination-link
+{
+	display: block;
+	float: left;
+	font: normal 8.4pt Tahoma !important;
+	margin: 0 3px 0 0;
+	padding: 3px 8px;
+	text-decoration: none;
+}

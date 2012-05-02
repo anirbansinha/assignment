@@ -1,0 +1,3 @@
+if(Opera===void 0)var Opera={configuration:{},vars:{}};Opera=function(a){this.version=Opera.VERSION;this.config(a);this.loadDriver(a.driver)};Opera.VERSION="1.0";
+Opera.prototype={config:function(a){if(a)this.configuration=a;return this.configuration},escapeXML:function(a){if(typeof a=="string")return a.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")},extend:function(a,b){var c=0;if(b===void 0)b=a.EXPORT;for(;b[c];){var d=b[c++];this[d]=a[d]}},loadDriver:function(a){var b=void 0;switch(a){case "yui":if(Opera.Driver.YUI!==void 0)b=Opera.Driver.YUI;break;default:alert("No driver selected or driver failure!")}b&&
+this.extend(b,b.EXPORT)},variables:function(a){if(a)this.vars=a;return this.vars}};
